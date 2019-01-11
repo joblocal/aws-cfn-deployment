@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const aws = require('aws-sdk');
 const fs = require('fs');
 const args = require('minimist')(
