@@ -6,7 +6,7 @@ Please take a moment to review this document in order to make the contribution p
 * Before you open a Pull Request, make sure to **open a Issue**.
 
 ## Bug reports
-Nobody wants bugs in their repository code. To make a good report, please provide your issue with helpfull and detailed information.
+Nobody wants bugs in their repository code. To make a good report, please provide your issue with helpful and detailed information.
 
 * **Validate and lint your code** -- Please run ```yarn validate``` to ensure that the problem isn't caused by a simple error in your own code.
 

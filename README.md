@@ -2,7 +2,7 @@
 
 ![Downloads](https://img.shields.io/npm/dt/@joblocal\/aws-cfn-deployment.svg)
 
-This Project provides a CLI tool for create or update an AWS CloudFormation.
+The Project provides a CLI tool for create and/or update an AWS CloudFormation.
 For example to create or update an AWS CloudFormation during a running pipeline.
 
 ## Requirements
@@ -23,12 +23,12 @@ Using npm for global usage:
 $ npm install -g @joblocal/aws-cfn-deployment
 ```
 
-Using yarn for projects:
+Installing as a local dependency using yarn:
 ```sh
 $ yarn add @joblocal/aws-cfn-deployment
 ```
 
-Using npm for projects:
+Installing as a local dependency using npm:
 
 ```sh
 $ npm install @joblocal/aws-cfn-deployment
@@ -53,7 +53,7 @@ $ aws-cfn-deployment
 
 ### Parameters
 The parameters **region**, **stackName** and **templatePath** are required.
-All required parameters for your CloudFormation file are attach (see example).
+All required parameters for your CloudFormation file are attached (see example).
 
 ### Example
 
