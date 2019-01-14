@@ -57,7 +57,7 @@ describe('utility', () => {
           ParameterValue: 'value',
         },
       ],
-      TemplateUrl: 'template',
+      TemplateURL: 'template',
       Capabilities: [
         'CAPABILITY_IAM',
         'CAPABILITY_NAMED_IAM',

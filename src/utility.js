@@ -31,7 +31,7 @@ const utility = (fs) => {
     };
 
     if (args.templateUrl) {
-      params.TemplateUrl = args.templateUrl;
+      params.TemplateURL = args.templateUrl;
     } else {
       params.TemplateBody = await readFile(args.templatePath);
     }
