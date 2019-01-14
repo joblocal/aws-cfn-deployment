@@ -8,16 +8,15 @@ const utility = (fs) => {
   });
 
   const parseParams = async (args) => {
-    const TemplateBody = await readFile(args.templatePath);
-
     const paramBlacklist = [
       '_',
       'region',
       'stackName',
       'templatePath',
+      'templateUrl',
     ];
 
-    return {
+    const params = {
       StackName: args.stackName,
       Parameters: Object.entries(args)
         .map(([key, value]) => ({
@@ -25,12 +24,19 @@ const utility = (fs) => {
           ParameterValue: String(value),
         }))
         .filter(p => !paramBlacklist.includes(p.ParameterKey)),
-      TemplateBody,
       Capabilities: [
         'CAPABILITY_IAM',
         'CAPABILITY_NAMED_IAM',
       ],
     };
+
+    if (args.templateUrl) {
+      params.TemplateUrl = args.templateUrl;
+    } else {
+      params.TemplateBody = await readFile(args.templatePath);
+    }
+
+    return params;
   };
 
   return {

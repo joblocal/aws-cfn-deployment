@@ -5,7 +5,7 @@
 const { utility } = require('./utility');
 
 describe('utility', () => {
-  test('to parse params', async () => {
+  test('to parse template path params', async () => {
     const fs = {
       readFile: (file, encoding, callback) => {
         callback(null, 'body');
@@ -30,6 +30,34 @@ describe('utility', () => {
         },
       ],
       TemplateBody: 'body',
+      Capabilities: [
+        'CAPABILITY_IAM',
+        'CAPABILITY_NAMED_IAM',
+      ],
+    });
+  });
+
+  test('to parse template url params', async () => {
+    const fs = {};
+
+    const { parseParams } = utility(fs);
+
+    const args = {
+      stackName: 'stack',
+      region: 'eu-west-1',
+      templateUrl: 'template',
+      param: 'value',
+    };
+
+    expect(await parseParams(args)).toEqual({
+      StackName: 'stack',
+      Parameters: [
+        {
+          ParameterKey: 'param',
+          ParameterValue: 'value',
+        },
+      ],
+      TemplateUrl: 'template',
       Capabilities: [
         'CAPABILITY_IAM',
         'CAPABILITY_NAMED_IAM',
