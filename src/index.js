@@ -26,5 +26,6 @@ const cfn = createClient(new aws.CloudFormation());
     await cfn.deploy(await parseParams(args));
   } catch (e) {
     console.error(e.message);
+    process.exit(1);
   }
 })();
