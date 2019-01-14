@@ -1,7 +1,7 @@
 {
   "name": "@joblocal/aws-cfn-deployment",
   "version": "1.0.0",
-  "description": "This tool can create or update an AWS CloudFormation stack with an CloudFormation file.",
+  "description": "Makes creating or updating of AWS CloudFormations so easy your build & deployment pipelines can do it.",
   "main": "src/index.js",
   "author": "joblocal GmbH",
   "license": "MIT",

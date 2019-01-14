@@ -3,7 +3,7 @@
 ![Downloads](https://img.shields.io/npm/dt/@joblocal\/aws-cfn-deployment.svg)
 
 The Project provides a CLI tool for create and/or update an AWS CloudFormation.
-For example to create or update an AWS CloudFormation during a running pipeline.
+`aws-cfn-deployment` simplifies keeping your AWS infrastructure in sync with your CloudFormation templates by integrating into your existing build & deployment pipelines.
 
 ## Requirements
 - AWS environment configuration
@@ -38,14 +38,13 @@ $ npm install @joblocal/aws-cfn-deployment
 Before you can use this package you need to configure your AWS environment
 variables. The easiest way is to use [AWS CLI](https://aws.amazon.com/de/cli/).
 
-After installing the package you can use it as follows.
+After installing `aws-cfn-deployment` you can use it as follows.
 
 ```sh
 $ aws-cfn-deployment
   --region {region}
   --stackName {stack name}
   --templatePath {path to your CloudFormation File}
-  --{cfn parameter name} {cfn parameter value}
   --{cfn parameter name} {cfn parameter value}
   --{cfn parameter name} {cfn parameter value}
   ...
@@ -62,13 +61,10 @@ AWS CloudFormation file (bucket.yaml):
 ---
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Creates a S3 bucket.
-
 Parameters:
-
   BucketName:
     Description: Name of your S3 bucket.
     Type: String
-
 Resources:
   DeploymentBucket:
     Type: AWS::S3::Bucket
@@ -79,7 +75,7 @@ Resources:
 Command:
 ```sh
 $ aws-cfn-deployment
-  --region us-east-1
+  --region $AWS_DEFAULT_REGION
   --stackName MyBucket
   --templatePath bucket.yaml
   --BucketName AwesomeBucket
