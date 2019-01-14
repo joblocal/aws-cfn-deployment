@@ -43,7 +43,7 @@ const createClient = (cfn) => {
     if (!stack) {
       await createStack(stackParams);
       await waitFor(stackParams, 'stackCreateComplete');
-    } else if (updateStack(stackParams)) {
+    } else if (await updateStack(stackParams)) {
       await waitFor(stackParams, 'stackUpdateComplete');
     }
   };

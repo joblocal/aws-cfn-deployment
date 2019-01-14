@@ -18,13 +18,13 @@ const createCfn = ({
     });
   }),
   createStack: jest.fn((options, callback) => {
-    callback(createError, null);
+    callback(createError, {});
   }),
   updateStack: jest.fn((options, callback) => {
-    callback(updateError, null);
+    callback(updateError, {});
   }),
   waitFor: jest.fn((status, options, callback) => {
-    callback(waitForError, null);
+    callback(waitForError, {});
   }),
 });
 
@@ -71,15 +71,12 @@ describe('deploy stack', () => {
 
   test('to reject createStack', async () => {
     const cfn = createCfn({
+      describeError: true,
       createError: { message: 'error create stack' },
     });
     const { deploy } = createClient(cfn);
 
-    try {
-      await deploy({});
-    } catch (e) {
-      expect(e).toEqual({ message: 'error create stack' });
-    }
+    await expect(deploy({})).rejects.toEqual({ message: 'error create stack' });
   });
 
   test('to reject updateStack', async () => {
@@ -88,11 +85,7 @@ describe('deploy stack', () => {
     });
     const { deploy } = createClient(cfn);
 
-    try {
-      await deploy({});
-    } catch (e) {
-      expect(e).toEqual({ message: 'error update stack' });
-    }
+    await expect(deploy({})).rejects.toEqual({ message: 'error update stack' });
   });
 
   test('to reject waitFor', async () => {
@@ -101,10 +94,6 @@ describe('deploy stack', () => {
     });
     const { deploy } = createClient(cfn);
 
-    try {
-      await deploy({});
-    } catch (e) {
-      expect(e).toEqual({ message: 'error wait for' });
-    }
+    await expect(deploy({})).rejects.toEqual({ message: 'error wait for' });
   });
 });
