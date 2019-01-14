@@ -1,5 +1,5 @@
 const createClient = (cfn) => {
-  const describeStack = StackName => new Promise((resolve) => {
+  const describeStack = ({ StackName }) => new Promise((resolve) => {
     cfn.describeStacks(
       {
         StackName,
