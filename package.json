@@ -1,6 +1,6 @@
 {
   "name": "@joblocal/aws-cfn-deployment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Makes creating or updating of AWS CloudFormations so easy your build & deployment pipelines can do it.",
   "main": "src/index.js",
   "author": "joblocal GmbH",
