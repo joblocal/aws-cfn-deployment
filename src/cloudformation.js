@@ -22,10 +22,10 @@ const createClient = (cfn) => {
     cfn.updateStack(
       stackParams,
       (error, data) => {
-        if (error && error.statusCode !== 400 && error.message !== 'No updates are to be performed.') {
-          reject(error);
-        } else {
+        if (!error || (error.statusCode === 400 && error.message === 'No updates are to be performed.')) {
           resolve(data);
+        } else {
+          reject(error);
         }
       },
     );

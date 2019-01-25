@@ -69,6 +69,19 @@ describe('deploy stack', () => {
     expect(cfn.waitFor).toHaveBeenCalled();
   });
 
+  test('to get a validation exception', async () => {
+    const error = {
+      statusCode: 400,
+      message: 'Error.',
+    };
+    const cfn = createCfn({
+      updateError: error,
+    });
+    const { deploy } = createClient(cfn);
+
+    await expect(deploy({})).rejects.toEqual(error);
+  });
+
   test('to reject createStack', async () => {
     const cfn = createCfn({
       describeError: true,
